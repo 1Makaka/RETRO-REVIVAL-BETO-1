@@ -31,9 +31,7 @@ export class NetworkService {
 
     return new Promise((resolve) => {
       try {
-        const targetUrl = window.location.hostname.includes('fly.dev')
-          ? NETWORK_CONFIG.SERVER_URL
-          : window.location.origin;
+        const targetUrl = NETWORK_CONFIG.SERVER_URL;
 
         this.socket = io(targetUrl, {
           transports: ['websocket', 'polling'],
