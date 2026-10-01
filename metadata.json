@@ -1,0 +1,6 @@
+{
+  "name": "Frantic Battles",
+  "description": "Пиксельная аркадная экшен-игра (бравлер) с видом сверху: эпические битвы, алтарь героев, лобби и рейтинговые матчи.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

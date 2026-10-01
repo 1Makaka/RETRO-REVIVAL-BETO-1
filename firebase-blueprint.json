@@ -1,0 +1,83 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile, economy state, roster, friends list and statistics",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "emailVerified": { "type": "boolean" },
+        "nickname": { "type": "string", "minLength": 3, "maxLength": 14 },
+        "nickname_lower": { "type": "string", "minLength": 3, "maxLength": 14 },
+        "tag": { "type": "string", "maxLength": 30 },
+        "rating": { "type": "integer" },
+        "rank": { "type": "string", "maxLength": 50 },
+        "economy": { "type": "object" },
+        "roster": { "type": "object" },
+        "stats": { "type": "object" },
+        "avatar": { "type": "string", "maxLength": 50 },
+        "friends": { "type": "array" },
+        "lastSeen": { "type": "integer" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "nickname", "nickname_lower", "tag", "rating", "economy", "roster"]
+    },
+    "MailboxMessage": {
+      "title": "MailboxMessage",
+      "description": "In-game chat message or lobby invite",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "type": { "type": "string", "enum": ["lobby_invite", "chat"] },
+        "senderUid": { "type": "string", "maxLength": 128 },
+        "senderNick": { "type": "string", "maxLength": 14 },
+        "senderTag": { "type": "string", "maxLength": 30 },
+        "lobbyId": { "type": "string", "maxLength": 128 },
+        "lobbyMode": { "type": "string", "maxLength": 50 },
+        "title": { "type": "string", "maxLength": 100 },
+        "text": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "integer" },
+        "accepted": { "type": "boolean" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "type", "senderUid", "senderNick", "senderTag", "title", "text", "createdAt"]
+    },
+    "MatchHistoryDoc": {
+      "title": "MatchHistoryDoc",
+      "description": "Historical log entry of completed dungeon runs and PvP arena matches",
+      "type": "object",
+      "properties": {
+        "matchId": { "type": "string", "maxLength": 128 },
+        "mode": { "type": "string", "enum": ["dungeon", "pvp_1v1", "pvp_2v2"] },
+        "result": { "type": "string", "enum": ["VICTORY", "DEFEAT"] },
+        "heroId": { "type": "string", "maxLength": 64 },
+        "timestamp": { "type": "integer" },
+        "durationSeconds": { "type": "integer" },
+        "floorsCleared": { "type": "integer" },
+        "skullsEarned": { "type": "integer" },
+        "bossesKilled": { "type": "integer" },
+        "ratingDelta": { "type": "integer" },
+        "currentRating": { "type": "integer" },
+        "opponentNick": { "type": "string", "maxLength": 64 },
+        "opponentHero": { "type": "string", "maxLength": 64 },
+        "teammateNick": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["matchId", "mode", "result", "heroId", "timestamp", "durationSeconds"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User documents containing profile, economy, and game progress"
+    },
+    "/users/{userId}/mailbox/{messageId}": {
+      "schema": "MailboxMessage",
+      "description": "Inbox messages, lobby invites, and player mail"
+    },
+    "/users/{userId}/match_history/{matchId}": {
+      "schema": "MatchHistoryDoc",
+      "description": "Individual match history records for dungeon and PvP matches"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+html, body, #root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+#game-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+#game-container canvas {
+  width: 100vw !important;
+  height: 100vh !important;
+  display: block;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Global Premium Retro Pixel Typography to Eliminate Blur */
+* {
+  font-family: 'VT323', 'Courier New', monospace !important;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+/* Custom Retro Pixel Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+  border: 1px solid #1e293b;
+}
+::-webkit-scrollbar-thumb {
+  background: #38bdf8;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7dd3fc;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 #090d16;
+}
