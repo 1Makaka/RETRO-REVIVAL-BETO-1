@@ -8,7 +8,7 @@
     "server"
   ],
   "scripts": {
-    "dev": "tsx server/server.ts",
+    "dev": "vite client",
     "start": "node server/server.js",
     "build": "vite build client",
     "lint": "tsc --noEmit --project client/tsconfig.json"

@@ -8,6 +8,11 @@ import { createFranticGame } from './game';
 import { soundEngine } from './game/audio';
 import { ReactLootboxModal } from './components/ReactLootboxModal';
 import { Volume2, VolumeX, Shield, Swords, Gamepad2, Maximize2, Minimize2, LogIn, LogOut, UserCheck, Copy, Check, Users, Trophy, Flame } from 'lucide-react';
+
+const CheckIcon = Check as any;
+const CopyIcon = Copy as any;
+const LogInIcon = LogIn as any;
+const UserCheckIcon = UserCheck as any;
 import { doc, getDoc } from 'firebase/firestore';
 import {
   loginWithGoogle,
@@ -1536,7 +1541,7 @@ export default function App() {
                 }}
                 className="px-2.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-sky-400 border border-sky-500/40 text-[11px] font-bold cursor-pointer flex items-center gap-1 shrink-0 transition-colors"
               >
-                {copySuccess ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copySuccess ? <CheckIcon className="w-3.5 h-3.5 text-emerald-400" /> : <CopyIcon className="w-3.5 h-3.5" />}
                 <span>{copySuccess ? 'СКОПИРОВАНО' : 'МОЙ КОД'}</span>
               </button>
             </div>
@@ -1731,7 +1736,7 @@ export default function App() {
                         onClick={handleGoogleLogin}
                         className="w-full py-2 bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-bold text-xs border border-[#60a5fa] flex items-center justify-center gap-2 cursor-pointer transition-colors shadow"
                       >
-                        <LogIn className="w-4 h-4" />
+                        <LogInIcon className="w-4 h-4" />
                         [ 🌐 ВОЙТИ ЧЕРЕЗ GOOGLE ]
                       </button>
 
@@ -1809,7 +1814,7 @@ export default function App() {
                   ) : (
                     <div className="flex items-center justify-between bg-emerald-950/60 border border-emerald-500/60 p-2.5 text-xs text-emerald-300">
                       <span className="flex items-center gap-1.5 font-bold">
-                        <UserCheck className="w-4 h-4 text-emerald-400" />
+                        <UserCheckIcon className="w-4 h-4 text-emerald-400" />
                         Google Облако Активно
                       </span>
                       <button
